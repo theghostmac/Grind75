@@ -13,6 +13,18 @@ pub fn two_sum(nums: Vec<i32>, target: i32) -> Vec<i32> {
     vec![]
 }
 
+// using arrays instead of Vectors.
+pub fn two_sum_with_arrays(elements: &[i32], target: i32) -> Option<(usize, usize)> {
+    for i in 0..elements.len() {
+        for j in i + 1..elements.len() {
+            if elements[i] + elements[j] == target {
+                return Some((i, j));
+            }
+        }
+    }
+    None
+}
+
 #[cfg(test)]
 mod test {
     use super::*;
@@ -34,4 +46,13 @@ mod test {
         let two_sum_result = two_sum(vec![3,3], 6);
         assert_eq!(two_sum_result, vec![0,1]);
     }
+
+    #[test]
+    fn array_experiment() {
+        let test_array = [2,7,11,15];
+        let two_sum_with_array_result = two_sum_with_arrays(&test_array, 9);
+        assert_eq!(two_sum_with_array_result, Some((0,1)));
+    }
+
 }
+
