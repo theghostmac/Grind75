@@ -1,3 +1,5 @@
+use std::fs::read_to_string;
+
 pub fn is_valid(s: String) -> bool {
     let mut stack = "".to_string();
 
@@ -12,6 +14,7 @@ pub fn is_valid(s: String) -> bool {
                         return false;
                     }
                 } else {
+                    // if stack is empty.
                     return false;
                 }
             }
