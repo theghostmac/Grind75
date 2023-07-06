@@ -27,14 +27,21 @@ mod test {
 
     #[test]
     fn example1() {
-        let s: String = String::from("()");
-        let result = is_valid(s);
-        assert!(result);
+       assert!(is_valid("()".to_string()))
     }
 
+    #[test]
     fn example2() {
-        let s: String = String::from("()");
-        let result = is_valid(s);
-        assert!(result);
+        assert!(is_valid("()[]{}".to_string()))
+    }
+
+    #[test]
+    fn example3() {
+        assert!(!is_valid("(]".to_string()))
+    }
+
+    #[test]
+    fn example4() {
+        assert!(is_valid("".to_string()))
     }
 }
