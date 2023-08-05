@@ -1,25 +1,32 @@
 pub fn is_valid(s: String) -> bool {
-        let mut stack = "".to_string();
+    // initialize a stack as a mutable empty string.
+    // stack DS is commonly for tasks that involve tracking a sequence of elements.
+    let mut stack = "".to_string();
 
-        for ch in s.chars() {
-            match ch {
-                '(' => stack.push(')'),
-                '{' => stack.push('}'),
-                '[' => stack.push(']'),
-                ')' | '}' | ']' => {
-                    if let Some(m) = stack.pop() {
-                        if m != ch {
-                            return false;
-                        }
-                    } else {
-                        // if stack is empty.
+    // iterate characters through the string and use match to match them.
+    for ch in s.chars() {
+        // do some pattern matching.
+        match ch {
+            '{' => stack.push('}'),
+            '[' => stack.push(']'),
+            '(' => stack.push(')'),
+            ']' | '}' | ')' => {
+                if let Some(matchedChar) = stack.pop() {
+                    if matchedChar != ch {
                         return false;
                     }
+                } else {
+                    // if stack is empty
+                    return false;
                 }
-                _ => return false,
             }
+
+            // if the character ch doesn't match any of the above cases, return false.
+            _ => return false,
         }
-        stack.len() == 0
+    }
+    // check that the stack is emppty
+    stack.len() == 0
 }
 
 #[cfg(test)]
@@ -28,7 +35,7 @@ mod test {
 
     #[test]
     fn example1() {
-       assert!(is_valid("()".to_string()))
+        assert!(is_valid("()".to_string()))
     }
 
     #[test]
