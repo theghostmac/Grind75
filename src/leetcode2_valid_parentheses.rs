@@ -11,8 +11,8 @@ pub fn is_valid(s: String) -> bool {
             '[' => stack.push(']'),
             '(' => stack.push(')'),
             ']' | '}' | ')' => {
-                if let Some(matchedChar) = stack.pop() {
-                    if matchedChar != ch {
+                if let Some(matched_char) = stack.pop() {
+                    if matched_char != ch {
                         return false;
                     }
                 } else {
