@@ -25,7 +25,7 @@ pub fn is_valid(s: String) -> bool {
             _ => return false,
         }
     }
-    // check that the stack is emppty
+    // check that the stack is empty
     stack.len() == 0
 }
 
